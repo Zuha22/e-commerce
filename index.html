@@ -182,6 +182,19 @@
        </form>
       </div>
      </div>
+    </div><!-- Thank You Page -->
+    <div id="thankyou-page" class="page">
+     <div style="width: 100%; padding: 80px 40px;">
+      <div style="max-width: 700px; margin: 0 auto; text-align: center;">
+       <div style="background: white; padding: 60px 40px; border-radius: 20px; box-shadow: 0 4px 16px rgba(0,0,0,0.1);">
+        <div style="font-size: 120px; margin-bottom: 32px;">
+         🎉
+        </div>
+        <h2 id="thankyou-title" style="font-size: 56px; font-weight: bold; margin-bottom: 24px;">Thank You!</h2>
+        <p id="thankyou-message" style="font-size: 22px; line-height: 1.6; margin-bottom: 40px; opacity: 0.8;">We've received your message and truly appreciate you reaching out to us. Our team will get back to you as soon as possible!</p><button onclick="navigateToPage('home')" class="btn-primary" id="back-home-btn" style="padding: 16px 48px; border: none; border-radius: 8px; font-size: 18px; font-weight: 600; cursor: pointer;"> Back to Home </button>
+       </div>
+      </div>
+     </div>
     </div>
    </main>
   </div>
@@ -283,7 +296,29 @@
         label.style.color = config.text_color || defaultConfig.text_color;
       });
       
-      document.getElementById('submit-text').style.fontSize = `${baseSize * 1.125}px`;
+      const submitText = document.getElementById('submit-text');
+      if (submitText) {
+        submitText.style.fontSize = `${baseSize * 1.125}px`;
+      }
+      
+      const thankYouTitle = document.getElementById('thankyou-title');
+      if (thankYouTitle) {
+        thankYouTitle.style.color = config.primary_action_color || defaultConfig.primary_action_color;
+        thankYouTitle.style.fontSize = `${baseSize * 3.5}px`;
+      }
+      
+      const thankYouMessage = document.getElementById('thankyou-message');
+      if (thankYouMessage) {
+        thankYouMessage.style.color = config.text_color || defaultConfig.text_color;
+        thankYouMessage.style.fontSize = `${baseSize * 1.375}px`;
+      }
+      
+      const backHomeBtn = document.getElementById('back-home-btn');
+      if (backHomeBtn) {
+        backHomeBtn.style.background = config.primary_action_color || defaultConfig.primary_action_color;
+        backHomeBtn.style.color = config.surface_color || defaultConfig.surface_color;
+        backHomeBtn.style.fontSize = `${baseSize * 1.125}px`;
+      }
       
       renderProducts();
       renderCart();
@@ -491,13 +526,12 @@
       submitBtn.disabled = false;
       
       if (result.isOk) {
-        showToast('Message sent successfully! We\'ll get back to you soon.');
-        showThankYouNotification();
         document.getElementById('contact-form').reset();
         submitBtn.innerHTML = '<span id="submit-text">Send Message</span>';
         const config = window.elementSdk?.config || defaultConfig;
         submitBtn.style.background = config.primary_action_color || defaultConfig.primary_action_color;
         submitBtn.style.color = config.surface_color || defaultConfig.surface_color;
+        navigateToPage('thankyou');
       } else {
         showToast('Failed to send message. Please try again.');
         submitBtn.innerHTML = '<span id="submit-text">Send Message</span>';
@@ -584,5 +618,5 @@
 
     init();
   </script>
- <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9a91b0b1c6c27f8b',t:'MTc2NDkxODI3NS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9a91d13c973e7f8b',t:'MTc2NDkxOTYwOC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
